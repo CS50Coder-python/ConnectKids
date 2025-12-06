@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ConnectKids – Opportunities</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white overflow-x-hidden">
+
+  <!-- Top Navigation (injected from header.html) -->
+  <header
+    class="w-full sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-100"
+    id="site-header">
+    <!-- header.html will be injected here -->
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="min-h-screen py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <section class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full mb-4">
+          <i data-lucide="sparkles" class="w-4 h-4 text-purple-600"></i>
+          <span class="text-sm font-semibold text-purple-600">100+ Free Programs</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          Find Free
+          <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Opportunities
+          </span>
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Discover vetted programs that match your child's interests and age
+        </p>
+      </section>
+
+      <!-- Search Bar -->
+      <section class="mb-8">
+        <div class="relative w-3/4 mx-auto">
+          <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search programs by title or description..."
+            class="w-full pl-12 pr-4 py-6 text-lg rounded-2xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none shadow-lg"
+          />
+        </div>
+      </section>
+
+      <!-- Filters -->
+      <section class="mb-12">
+        <!-- Interest Categories -->
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-3">
+            <i data-lucide="filter" class="w-5 h-5 text-gray-600"></i>
+            <h3 class="font-semibold text-gray-700">Interest</h3>
+          </div>
+          <div id="interest-filters" class="flex flex-wrap gap-3">
+            <!-- Buttons are static; JS only toggles classes -->
+            <button
+              class="interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105"
+              data-interest="all">
+              <span class="mr-2">✨</span>All
+            </button>
+            <button
+              class="interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-interest="arts">
+              <span class="mr-2">🎨</span>Arts
+            </button>
+            <button
+              class="interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-interest="music">
+              <span class="mr-2">🎵</span>Music
+            </button>
+            <button
+              class="interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-interest="stem">
+              <span class="mr-2">🔬</span>STEM
+            </button>
+            <button
+              class="interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-interest="sports">
+              <span class="mr-2">⚽</span>Sports
+            </button>
+            <button
+              class="interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-interest="coding">
+              <span class="mr-2">💻</span>Coding
+            </button>
+          </div>
+        </div>
+
+        <!-- Age Range -->
+        <div>
+          <h3 class="font-semibold text-gray-700 mb-3">Age Range</h3>
+          <div id="age-filters" class="flex flex-wrap gap-3">
+            <button
+              class="age-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg scale-105"
+              data-age="all">
+              All Ages
+            </button>
+            <button
+              class="age-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-age="6-8">
+              6–8 years
+            </button>
+            <button
+              class="age-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-age="9-11">
+              9–11 years
+            </button>
+            <button
+              class="age-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-age="12-14">
+              12–14 years
+            </button>
+            <button
+              class="age-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300"
+              data-age="15-18">
+              15–18 years
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results summary + Create button -->
+      <section class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <p class="text-gray-600">
+          <span id="results-count-number" class="font-bold text-gray-900">0</span>
+          <span> programs found</span>
+        </p>
+        <a data-page="CreateOpportunity">
+          <button
+            class="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-5 py-2.5 rounded-xl font-semibold inline-flex items-center">
+            <span class="mr-1">+</span> Create Opportunity
+          </button>
+        </a>
+      </section>
+
+      <!-- Loading State -->
+      <section id="loading-state" class="flex flex-col items-center justify-center py-20">
+        <i data-lucide="loader-2" class="w-12 h-12 text-purple-600 animate-spin mb-4"></i>
+        <p class="text-gray-600">Loading opportunities...</p>
+      </section>
+
+      <!-- Empty State -->
+      <section id="empty-state" class="hidden text-center py-20">
+        <i data-lucide="alert-circle" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">No programs found</h3>
+        <p class="text-gray-600 mb-6">
+          Try adjusting your filters or create a new opportunity
+        </p>
+        <a data-page="CreateOpportunity">
+          <button
+            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-semibold inline-flex items-center">
+            Create Opportunity
+          </button>
+        </a>
+      </section>
+
+      <!-- Opportunities Grid -->
+      <section id="opportunities-grid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Cards injected by JS -->
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // ---------- ROUTING ----------
+    function createPageUrl(page) {
+      const routes = {
+        Home: "home.html",
+        Opportunities: "opportunities.html",
+        CreateOpportunity: "create-opportunity.html",
+        Donate: "donate.html",
+        CompleteProfile: "complete-profile.html",
+        Impact: "impact.html",
+        Statistics: "statistics.html"
+      };
+      return routes[page] || "home.html";
+    }
+
+    // ---------- LOCALSTORAGE HELPERS ----------
+    const STORAGE_KEY = "connectkids_opportunities";
+
+    function loadLocalOpportunities() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        console.warn("Failed to parse opportunities from localStorage", e);
+        return [];
+      }
+    }
+
+    // Some demo opportunities so the page isn't empty on first load
+    const SEED_OPPORTUNITIES = [
+      {
+        id: "seed-1",
+        title: "Intro to Python Coding",
+        age_range: "12-14",
+        interest: "coding",
+        description: "A beginner-friendly online course where students learn Python basics through small projects and games.",
+        link: "https://example.org/python-intro",
+        organization: "Code for Kids",
+        created_at: "2025-01-01T00:00:00.000Z"
+      },
+      {
+        id: "seed-2",
+        title: "Creative Art Studio at Home",
+        age_range: "6-8",
+        interest: "arts",
+        description: "Weekly virtual art sessions using simple household materials to spark creativity and confidence.",
+        link: "https://example.org/creative-art",
+        organization: "Neighborhood Arts Collective",
+        created_at: "2025-01-02T00:00:00.000Z"
+      },
+      {
+        id: "seed-3",
+        title: "Summer STEM Explorers",
+        age_range: "9-11",
+        interest: "stem",
+        description: "Hands-on experiments in science and engineering, designed for low-bandwidth households.",
+        link: "https://example.org/stem-explorers",
+        organization: "STEM Bridge",
+        created_at: "2025-01-03T00:00:00.000Z"
+      }
+    ];
+
+    // ---------- RENDERING ----------
+    function getInterestMeta(interest) {
+      const map = {
+        arts:  { label: "Arts & Crafts", emoji: "🎨", color: "from-pink-500 to-red-500" },
+        music: { label: "Music",        emoji: "🎵", color: "from-blue-500 to-cyan-500" },
+        stem:  { label: "STEM",         emoji: "🔬", color: "from-emerald-500 to-teal-500" },
+        sports:{ label: "Sports & Fitness", emoji: "⚽", color: "from-orange-500 to-red-500" },
+        coding:{ label: "Coding",       emoji: "💻", color: "from-purple-500 to-pink-500" },
+        default: { label: "General", emoji: "✨", color: "from-gray-500 to-gray-700" }
+      };
+      return map[interest] || map.default;
+    }
+
+    function renderOpportunities(opportunities) {
+      const grid = document.getElementById("opportunities-grid");
+      const emptyState = document.getElementById("empty-state");
+      const loadingState = document.getElementById("loading-state");
+      const resultsCountEl = document.getElementById("results-count-number");
+
+      if (!grid) return;
+
+      // Hide loading
+      loadingState.classList.add("hidden");
+
+      // Update results count
+      resultsCountEl.textContent = opportunities.length.toString();
+
+      // Empty state handling
+      if (opportunities.length === 0) {
+        grid.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      } else {
+        emptyState.classList.add("hidden");
+      }
+
+      grid.innerHTML = "";
+
+      opportunities.forEach((opp) => {
+        const meta = getInterestMeta(opp.interest);
+        const created = opp.created_at
+          ? new Date(opp.created_at)
+          : null;
+        const createdLabel = created
+          ? created.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })
+          : "";
+
+        const card = document.createElement("article");
+        card.className =
+          "bg-white rounded-2xl shadow-xl border border-gray-100 p-6 flex flex-col justify-between hover:shadow-2xl transition-all hover:-translate-y-1";
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-start justify-between mb-3">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r ${meta.color} text-white">
+                <span>${meta.emoji}</span>
+                <span>${meta.label}</span>
+              </div>
+              <div class="text-xs text-gray-500">
+                ${opp.age_range ? `${opp.age_range} yrs` : ""}
+              </div>
+            </div>
+
+            <h3 class="text-lg font-bold text-gray-900 mb-2">
+              ${opp.title || "Untitled Opportunity"}
+            </h3>
+            <p class="text-sm text-gray-600 mb-3">
+              ${opp.description || ""}
+            </p>
+
+            ${
+              opp.organization
+                ? `<p class="text-xs text-gray-500 mb-2">Hosted by <span class="font-semibold">${opp.organization}</span></p>`
+                : ""
+            }
+
+            ${
+              createdLabel
+                ? `<p class="text-xs text-gray-400">Added on ${createdLabel}</p>`
+                : ""
+            }
+          </div>
+
+          <div class="mt-4 flex items-center justify-between">
+            <a
+              href="${opp.link || "#"}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold hover:from-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg"
+            >
+              View Program
+              <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+            </a>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      // Render icons in newly added content
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    // ---------- FILTERING ----------
+    function applyFilters(allOpportunities, state) {
+      const { selectedInterest, selectedAge, searchQuery } = state;
+      const query = searchQuery.trim().toLowerCase();
+
+      return allOpportunities.filter((opp) => {
+        const ageMatch =
+          selectedAge === "all" || (opp.age_range && opp.age_range === selectedAge);
+
+        const interestMatch =
+          selectedInterest === "all" || (opp.interest && opp.interest === selectedInterest);
+
+        const text = ((opp.title || "") + " " + (opp.description || "")).toLowerCase();
+        const searchMatch = !query || text.includes(query);
+
+        return ageMatch && interestMatch && searchMatch;
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Inject header
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const headerEl = document.getElementById("site-header");
+          if (headerEl) headerEl.innerHTML = html;
+
+          // Wire nav links
+          document.querySelectorAll("[data-page]").forEach((el) => {
+            const page = el.getAttribute("data-page");
+            el.setAttribute("href", createPageUrl(page));
+          });
+
+          // Initialize icons (header + static content)
+          if (window.lucide) {
+            window.lucide.createIcons();
+          }
+        })
+        .catch((err) => {
+          console.error("Error loading header.html:", err);
+        });
+
+      const localOpportunities = loadLocalOpportunities();
+
+      // Merge local + seed; sort by created_at desc, newest first
+      const combined = [...localOpportunities, ...SEED_OPPORTUNITIES].sort((a, b) => {
+        const da = a.created_at ? new Date(a.created_at).getTime() : 0;
+        const db = b.created_at ? new Date(b.created_at).getTime() : 0;
+        return db - da;
+      });
+
+      const state = {
+        selectedInterest: "all",
+        selectedAge: "all",
+        searchQuery: ""
+      };
+
+      const searchInput = document.getElementById("search-input");
+      const interestButtons = document.querySelectorAll(".interest-btn");
+      const ageButtons = document.querySelectorAll(".age-btn");
+
+      function updateInterestButtons() {
+        interestButtons.forEach((btn) => {
+          const val = btn.getAttribute("data-interest");
+          if (val === state.selectedInterest) {
+            btn.className =
+              "interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105";
+          } else {
+            btn.className =
+              "interest-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300";
+          }
+        });
+      }
+
+      function updateAgeButtons() {
+        ageButtons.forEach((btn) => {
+          const val = btn.getAttribute("data-age");
+          if (val === state.selectedAge) {
+            btn.className =
+              "age-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg scale-105";
+          } else {
+            btn.className =
+              "age-btn px-5 py-2.5 rounded-xl font-semibold transition-all bg-white text-gray-700 border-2 border-gray-200 hover:border-purple-300";
+          }
+        });
+      }
+
+      function refresh() {
+        const filtered = applyFilters(combined, state);
+        renderOpportunities(filtered);
+      }
+
+      // Initial render
+      updateInterestButtons();
+      updateAgeButtons();
+      refresh();
+
+      // Event: search
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          state.searchQuery = e.target.value || "";
+          refresh();
+        });
+      }
+
+      // Event: interest filters
+      interestButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.selectedInterest = btn.getAttribute("data-interest");
+          updateInterestButtons();
+          refresh();
+        });
+      });
+
+      // Event: age filters
+      ageButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.selectedAge = btn.getAttribute("data-age");
+          updateAgeButtons();
+          refresh();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

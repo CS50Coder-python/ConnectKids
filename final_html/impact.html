@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ConnectKids Impact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-white overflow-x-hidden">
+
+  <!-- Navigation Bar (injected) -->
+  <header class="w-full sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-100" id="site-header">
+    <!-- header.html will be injected here -->
+  </header>
+
+  <!-- HERO -->
+  <section class="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-100 to-blue-100 rounded-full mb-6">
+        <i data-lucide="trending-up" class="w-4 h-4 text-green-600"></i>
+        <span class="text-sm font-semibold text-green-600">Impact Overview</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
+        Our <span class="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Impact Scale</span>
+      </h1>
+
+      <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+        Here’s how ConnectKids expands access, participation, and long-term opportunity for children across the United States—through a four-level, multi-year roadmap.
+      </p>
+    </div>
+  </section>
+
+  <!-- LEVELS LIST -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-4 space-y-12">
+
+      <!-- LEVELS DATA -->
+      <script>
+        window.IMPACT_LEVELS = [
+          {
+            level: 1,
+            title: "Awareness & Matching",
+            description: "Collect and surface free programs across the United States.",
+            target: 1000000,
+            targetLabel: "families reached",
+            timeframe: "Within 12 months",
+            icon: "target",
+            color: "from-blue-500 to-cyan-500",
+            achievements: [
+              "Build comprehensive program database",
+              "Launch matching platform",
+              "Partner with 100+ organizations",
+              "Reach underserved communities"
+            ]
+          },
+          {
+            level: 2,
+            title: "Participation Boost",
+            description: "Reduce the number of children missing extracurriculars.",
+            target: 2260000,
+            targetLabel: "children engaged",
+            timeframe: "Within 2 years",
+            icon: "users",
+            color: "from-purple-500 to-pink-500",
+            achievements: [
+              "Convert 10% of unmet demand",
+              "Provide low-tech access options",
+              "Streamline signup processes",
+              "Offer ongoing support"
+            ]
+          },
+          {
+            level: 3,
+            title: "Skill & Opportunity Growth",
+            description: "Measurable gains in development and readiness.",
+            target: null,
+            targetLabel: "improved outcomes",
+            timeframe: "Over 5 years",
+            icon: "trending-up",
+            color: "from-green-500 to-teal-500",
+            achievements: [
+              "Track skill development",
+              "Measure STEM interest growth",
+              "Monitor college readiness",
+              "Document success stories"
+            ]
+          },
+          {
+            level: 4,
+            title: "Systems Change",
+            description: "Embed free extracurricular access into public education.",
+            target: null,
+            targetLabel: "policy adoption",
+            timeframe: "Long-term",
+            icon: "award",
+            color: "from-orange-500 to-red-500",
+            achievements: [
+              "Partner with school districts",
+              "Secure government funding",
+              "Influence education policy",
+              "Create sustainable model"
+            ]
+          }
+        ];
+      </script>
+
+      <div id="impact-levels"></div>
+    </div>
+  </section>
+
+  <!-- NOTE -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100 text-gray-700">
+      <p class="leading-relaxed">
+        <span class="font-semibold text-gray-900">Note:</span>
+        These projections are conservative estimates based on current capacity and expected partnerships. Real impact may scale faster with additional funding and volunteer support.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Help Us Reach These Goals</h2>
+      <p class="text-lg mb-8 opacity-90">
+        Every contribution, volunteer hour, and partnership accelerates our impact.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a data-page="Donate">
+          <button class="px-8 py-4 bg-white text-purple-600 rounded-xl font-bold hover:bg-gray-100 shadow-lg transition-all">
+            Support Our Mission
+          </button>
+        </a>
+
+        <a data-page="CreateOpportunity">
+          <button class="px-8 py-4 bg-white/10 border border-white rounded-xl font-bold hover:bg-white/20 transition-all">
+            Create Opportunity
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS: Build levels + routing -->
+  <script>
+    // ROUTING (relative paths)
+    function createPageUrl(page) {
+      const routes = {
+        Home: "home.html",
+        Opportunities: "opportunities.html",
+        CreateOpportunity: "create-opportunity.html",
+        Donate: "donate.html",
+        CompleteProfile: "complete-profile.html",
+        Impact: "impact.html",
+        Statistics: "statistics.html"
+      };
+      return routes[page] || "home.html";
+    }
+
+    // Fallback header HTML (used if header.html can't be fetched)
+    const FALLBACK_HEADER_HTML = `
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+          </div>
+          <a data-page="Home" class="text-lg font-bold tracking-tight text-gray-900 hover:text-purple-600 cursor-pointer">
+            ConnectKids
+          </a>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm font-medium">
+          <a data-page="Opportunities" class="text-gray-600 hover:text-purple-600 cursor-pointer">
+            Programs
+          </a>
+          <a data-page="CreateOpportunity" class="text-gray-600 hover:text-purple-600 cursor-pointer">
+            Create Opportunity
+          </a>
+          <a data-page="Impact" class="text-gray-600 hover:text-purple-600 cursor-pointer">
+            Impact
+          </a>
+          <a data-page="Statistics" class="text-gray-600 hover:text-purple-600 cursor-pointer">
+            Statistics
+          </a>
+          <a
+            data-page="Donate"
+            class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md hover:shadow-lg hover:from-blue-700 hover:to-purple-700 cursor-pointer font-semibold"
+          >
+            Support Us
+          </a>
+        </nav>
+      </div>
+    `;
+
+    function wireRouting() {
+      document.querySelectorAll("[data-page]").forEach((el) => {
+        const page = el.getAttribute("data-page");
+        const url = createPageUrl(page);
+
+        if (el.tagName.toLowerCase() === "a") {
+          el.setAttribute("href", url);
+        } else {
+          el.addEventListener("click", () => {
+            window.location.href = url;
+          });
+        }
+      });
+    }
+
+    function initIcons() {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const headerEl = document.getElementById("site-header");
+
+      // Try to inject header.html, fall back if it fails (e.g. file://)
+      fetch("header.html")
+        .then((res) => {
+          if (!res.ok) throw new Error("header.html not found");
+          return res.text();
+        })
+        .then((html) => {
+          if (headerEl) headerEl.innerHTML = html;
+        })
+        .catch(() => {
+          if (headerEl) headerEl.innerHTML = FALLBACK_HEADER_HTML;
+        })
+        .finally(() => {
+          wireRouting();
+          initIcons();
+        });
+
+      // Render impact levels
+      const container = document.getElementById("impact-levels");
+      if (window.IMPACT_LEVELS && container) {
+        window.IMPACT_LEVELS.forEach(level => {
+          const div = document.createElement("div");
+          div.className =
+            "bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden transition-all hover:shadow-2xl";
+
+          div.innerHTML = `
+            <div class="h-2 bg-gradient-to-r ${level.color}"></div>
+            <div class="p-8 flex flex-col md:flex-row gap-8">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br ${level.color} flex items-center justify-center flex-shrink-0">
+                <i data-lucide="${level.icon}" class="w-8 h-8 text-white"></i>
+              </div>
+
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="px-3 py-1 rounded-full text-sm font-bold bg-gradient-to-r ${level.color} text-white">Level ${level.level}</span>
+                  <span class="text-sm text-gray-500">${level.timeframe}</span>
+                </div>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">${level.title}</h3>
+                <p class="text-gray-600 mb-6">${level.description}</p>
+
+                ${
+                  level.target
+                    ? `<div class="mb-6 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl">
+                        <div class="text-4xl font-bold bg-gradient-to-r ${level.color} bg-clip-text text-transparent">
+                          ${level.target.toLocaleString()}
+                        </div>
+                        <div class="text-sm text-gray-600 mt-1">${level.targetLabel}</div>
+                      </div>`
+                    : `<div class="mb-6 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl">
+                        <div class="text-2xl font-bold bg-gradient-to-r ${level.color} bg-clip-text text-transparent">
+                          ${level.targetLabel}
+                        </div>
+                      </div>`
+                }
+
+                <div class="grid md:grid-cols-2 gap-3">
+                  ${level.achievements
+                    .map(
+                      a => `
+                        <div class="flex items-start gap-2">
+                          <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                          <span class="text-sm text-gray-600">${a}</span>
+                        </div>
+                      `
+                    )
+                    .join("")}
+                </div>
+              </div>
+            </div>
+          `;
+
+          container.appendChild(div);
+        });
+
+        // Re-run Lucide icons for dynamically added content
+        initIcons();
+      }
+    });
+  </script>
+
+</body>
+</html>

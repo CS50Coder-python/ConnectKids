@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ConnectKids – Donate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-white overflow-x-hidden">
+
+  <!-- Top Navigation -->
+  <header class="w-full sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-100" id="site-header">
+    <!-- header.html will be injected here -->
+  </header>
+
+  <!-- MAIN DONATE CONTENT -->
+  <main class="min-h-screen py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- MAIN DONATE SECTION -->
+      <section id="donate-main">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-100 to-pink-100 rounded-full mb-4">
+            <i data-lucide="heart" class="w-4 h-4 text-red-600"></i>
+            <span class="text-sm font-semibold text-red-600">Support Our Mission</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            Make a <span class="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">Difference</span>
+          </h1>
+
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Your donation helps us maintain the platform, expand outreach, and keep opportunities free for every child.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- LEFT: Donation Form -->
+          <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+            <div class="h-2 bg-gradient-to-r from-red-500 via-pink-500 to-orange-500"></div>
+
+            <form id="donation-form" class="p-8 space-y-6">
+              <!-- AMOUNT SELECTOR -->
+              <div>
+                <label class="text-sm font-bold text-gray-700 mb-3 block">Select Amount</label>
+                <div class="grid grid-cols-3 gap-3 mb-4">
+                  <button type="button" data-amount="10"
+                    class="preset-btn py-4 px-4 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    $10
+                  </button>
+                  <button type="button" data-amount="25"
+                    class="preset-btn py-4 px-4 rounded-xl font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg scale-105">
+                    $25
+                  </button>
+                  <button type="button" data-amount="50"
+                    class="preset-btn py-4 px-4 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    $50
+                  </button>
+                  <button type="button" data-amount="100"
+                    class="preset-btn py-4 px-4 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    $100
+                  </button>
+                  <button type="button" data-amount="250"
+                    class="preset-btn py-4 px-4 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200">
+                    $250
+                  </button>
+                  <span></span>
+                </div>
+
+                <div class="relative">
+                  <i data-lucide="dollar-sign" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                  <input
+                    id="custom-amount"
+                    type="number"
+                    min="1"
+                    step="1"
+                    placeholder="Custom amount"
+                    class="w-full pl-12 rounded-xl border-2 py-6 text-lg outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+                  />
+                </div>
+              </div>
+
+              <!-- NAME -->
+              <div>
+                <label class="text-sm font-bold text-gray-700">Your Name *</label>
+                <input id="donor-name" type="text" required
+                  class="mt-2 w-full rounded-xl border-2 py-3 px-4 text-lg outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+                  placeholder="John Doe" />
+              </div>
+
+              <!-- EMAIL -->
+              <div>
+                <label class="text-sm font-bold text-gray-700">Email Address *</label>
+                <input id="donor-email" type="email" required
+                  class="mt-2 w-full rounded-xl border-2 py-3 px-4 text-lg outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+                  placeholder="john@example.com" />
+              </div>
+
+              <!-- SUBMIT BUTTON -->
+              <button id="donate-button" type="submit"
+                class="w-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white py-6 rounded-xl text-lg font-bold shadow-xl flex justify-center">
+                <span id="donate-button-label" class="flex items-center">
+                  <i data-lucide="heart" class="w-5 h-5 mr-2"></i>
+                  <span id="donate-button-text">Donate $25</span>
+                </span>
+
+                <span id="donate-button-processing"
+                  class="hidden items-center justify-center">
+                  <i data-lucide="loader-2" class="w-5 h-5 mr-2 animate-spin"></i>
+                  Processing...
+                </span>
+              </button>
+
+              <p class="text-xs text-center text-gray-500 mt-2">
+                This is a demo. Payments would be securely processed in production.
+              </p>
+            </form>
+          </div>
+
+          <!-- RIGHT: Impact Card -->
+          <div class="space-y-6">
+            <div class="bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-2xl p-8 text-white shadow-xl">
+              <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                Your Impact
+              </h3>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-full bg-white/20 flex justify-center items-center font-bold">$10</div>
+                  <div>
+                    <p class="font-semibold">Basic Support</p>
+                    <p class="text-sm text-white/90">Keeps our platform online for families.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-full bg-white/20 flex justify-center items-center font-bold">$50</div>
+                  <div>
+                    <p class="font-semibold">Program Boost</p>
+                    <p class="text-sm text-white/90">Connects 50 families with free programs.</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-full bg-white/20 flex justify-center items-center font-bold">$100+</div>
+                  <div>
+                    <p class="font-semibold">Community Builder</p>
+                    <p class="text-sm text-white/90">Funds outreach to underserved groups.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+              <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <i data-lucide="users" class="w-5 h-5 text-purple-600"></i>
+                Where Your Money Goes
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Platform Infrastructure</span><span class="font-bold">40%</span>
+                  </div>
+                  <div class="h-2 bg-gray-200 rounded-full"><div class="h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" style="width:40%"></div></div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Outreach</span><span class="font-bold">30%</span>
+                  </div>
+                  <div class="h-2 bg-gray-200 rounded-full"><div class="h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style="width:30%"></div></div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Program Vetting</span><span class="font-bold">20%</span>
+                  </div>
+                  <div class="h-2 bg-gray-200 rounded-full"><div class="h-2 bg-gradient-to-r from-pink-500 to-red-500 rounded-full" style="width:20%"></div></div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Operations</span><span class="font-bold">10%</span>
+                  </div>
+                  <div class="h-2 bg-gray-200 rounded-full"><div class="h-2 bg-gradient-to-r from-red-500 to-orange-500 rounded-full" style="width:10%"></div></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- THANK YOU -->
+      <section id="donate-thankyou" class="hidden text-center py-24">
+        <i data-lucide="check-circle" class="w-24 h-24 text-green-500 mx-auto mb-6"></i>
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Thank You! 💙</h2>
+        <p class="text-xl text-gray-600 mb-4">
+          Your support helps us keep ConnectKids free for every child.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- UNIVERSAL HEADER + ROUTING FIX -->
+  <script>
+    function createPageUrl(page) {
+      const routes = {
+        Home: "home.html",
+        Opportunities: "opportunities.html",
+        CreateOpportunity: "create-opportunity.html",
+        Donate: "donate.html",
+        CompleteProfile: "complete-profile.html",
+        Impact: "impact.html",
+        Statistics: "statistics.html"
+      };
+      return routes[page] || "home.html";
+    }
+
+    function wireRouting() {
+      document.querySelectorAll("[data-page]").forEach(el => {
+        const page = el.getAttribute("data-page");
+        const url = createPageUrl(page);
+
+        if (el.tagName.toLowerCase() === "a") {
+          el.setAttribute("href", url);
+        } else {
+          el.addEventListener("click", () => (window.location.href = url));
+        }
+      });
+    }
+
+    function initIcons() {
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const headerEl = document.getElementById("site-header");
+
+      const fallbackHeader = `
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center">
+              <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+            </div>
+            <a data-page="Home" class="text-lg font-bold text-gray-900 hover:text-purple-600 cursor-pointer">ConnectKids</a>
+          </div>
+          <nav class="hidden sm:flex items-center gap-6 text-sm font-medium">
+            <a data-page="Opportunities" class="text-gray-600 hover:text-purple-600 cursor-pointer">Programs</a>
+            <a data-page="CreateOpportunity" class="text-gray-600 hover:text-purple-600 cursor-pointer">Create Opportunity</a>
+            <a data-page="Impact" class="text-gray-600 hover:text-purple-600 cursor-pointer">Impact</a>
+            <a data-page="Statistics" class="text-gray-600 hover:text-purple-600 cursor-pointer">Statistics</a>
+            <a data-page="Donate" class="text-gray-600 hover:text-purple-600 cursor-pointer">Donate</a>
+          </nav>
+        </div>
+      `;
+
+      fetch("header.html")
+        .then(res => {
+          if (!res.ok) throw new Error("missing header");
+          return res.text();
+        })
+        .then(html => headerEl.innerHTML = html)
+        .catch(() => headerEl.innerHTML = fallbackHeader)
+        .finally(() => {
+          wireRouting();
+          initIcons();
+        });
+
+      // DONATION LOGIC (unchanged)
+      let amount = "25";
+      let customAmount = "";
+
+      const presetButtons = document.querySelectorAll(".preset-btn");
+      const customAmountInput = document.getElementById("custom-amount");
+      const donateButton = document.getElementById("donate-button");
+      const donateButtonLabel = document.getElementById("donate-button-label");
+      const donateButtonProcessing = document.getElementById("donate-button-processing");
+      const donateButtonText = document.getElementById("donate-button-text");
+      const donationForm = document.getElementById("donation-form");
+
+      function updatePresetStyles() {
+        presetButtons.forEach(btn => {
+          const val = btn.getAttribute("data-amount");
+          btn.className =
+            val === amount && !customAmount
+              ? "preset-btn py-4 px-4 rounded-xl font-bold bg-gradient-to-r from-red-600 to-pink-600 text-white shadow-lg scale-105"
+              : "preset-btn py-4 px-4 rounded-xl font-bold bg-gray-100 text-gray-700 hover:bg-gray-200";
+        });
+      }
+
+      function updateButtonText() {
+        const v = customAmount || amount;
+        donateButtonText.textContent = v ? `Donate $${v}` : "Donate";
+      }
+
+      presetButtons.forEach(btn =>
+        btn.addEventListener("click", () => {
+          amount = btn.getAttribute("data-amount");
+          customAmount = "";
+          customAmountInput.value = "";
+          updatePresetStyles();
+          updateButtonText();
+        })
+      );
+
+      customAmountInput.addEventListener("input", e => {
+        customAmount = e.target.value;
+        if (customAmount) amount = "";
+        updatePresetStyles();
+        updateButtonText();
+      });
+
+      donationForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const name = document.getElementById("donor-name").value.trim();
+        const email = document.getElementById("donor-email").value.trim();
+        const finalAmount = customAmount || amount;
+
+        if (!name || !email) return alert("Please complete all fields.");
+        if (!finalAmount || finalAmount <= 0) return alert("Enter a valid amount.");
+
+        donateButton.disabled = true;
+        donateButtonLabel.classList.add("hidden");
+        donateButtonProcessing.classList.remove("hidden");
+
+        setTimeout(() => {
+          document.getElementById("donate-main").classList.add("hidden");
+          document.getElementById("donate-thankyou").classList.remove("hidden");
+        }, 2000);
+      });
+
+      updatePresetStyles();
+      updateButtonText();
+    });
+  </script>
+
+</body>
+</html>

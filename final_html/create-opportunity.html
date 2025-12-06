@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ConnectKids – Create Opportunity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white overflow-x-hidden">
+
+  <!-- Top Navigation (injected from header.html) -->
+  <header
+    class="w-full sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-gray-100"
+    id="site-header">
+    <!-- header.html will be injected here -->
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="min-h-screen py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Create Opportunity Form Section -->
+      <section id="create-main">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full mb-4">
+            <i data-lucide="plus" class="w-4 h-4 text-purple-600"></i>
+            <span class="text-sm font-semibold text-purple-600">Share an Opportunity</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            Create an
+            <span class="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Opportunity
+            </span>
+          </h1>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Share a free extracurricular offering so families can find and sign up.
+            All submissions are stored locally in this demo and can be displayed on the Opportunities page.
+          </p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+          <div class="h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500"></div>
+
+          <form id="create-opportunity-form" class="p-8 space-y-6">
+            <!-- Title -->
+            <div>
+              <label for="title"
+                     class="text-sm font-bold text-gray-700 flex items-center gap-1">
+                Opportunity Title
+                <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="title"
+                type="text"
+                placeholder="e.g., Intro to Python Programming"
+                class="mt-2 w-full rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 py-3 px-4 text-lg outline-none"
+                required
+              />
+            </div>
+
+            <!-- Age Range + Category -->
+            <div class="grid md:grid-cols-2 gap-6">
+              <!-- Age Range -->
+              <div>
+                <label for="age_range"
+                       class="text-sm font-bold text-gray-700 flex items-center gap-1">
+                  Target Age Range
+                  <span class="text-red-500">*</span>
+                </label>
+                <select
+                  id="age_range"
+                  class="mt-2 w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none text-lg"
+                  required
+                >
+                  <option value="6-8">6–8 years</option>
+                  <option value="9-11" selected>9–11 years</option>
+                  <option value="12-14">12–14 years</option>
+                  <option value="15-18">15–18 years</option>
+                </select>
+              </div>
+
+              <!-- Category -->
+              <div>
+                <label for="interest"
+                       class="text-sm font-bold text-gray-700 flex items-center gap-1">
+                  Category
+                  <span class="text-red-500">*</span>
+                </label>
+                <select
+                  id="interest"
+                  class="mt-2 w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none text-lg"
+                  required
+                >
+                  <option value="arts">Arts &amp; Crafts</option>
+                  <option value="music">Music</option>
+                  <option value="stem">STEM</option>
+                  <option value="sports">Sports &amp; Fitness</option>
+                  <option value="coding" selected>Coding</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+              <label for="description"
+                     class="text-sm font-bold text-gray-700 flex items-center gap-1">
+                Description
+                <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="description"
+                rows="5"
+                placeholder="Briefly describe the program, what children will learn, format (online/in-person), and schedule..."
+                class="mt-2 w-full rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-lg outline-none resize-none p-4"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Link -->
+            <div>
+              <label for="link"
+                     class="text-sm font-bold text-gray-700 flex items-center gap-1">
+                Program Website / Link
+                <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="link"
+                type="url"
+                placeholder="https://example.org/my-free-program"
+                class="mt-2 w-full rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 py-3 px-4 text-lg outline-none"
+                required
+              />
+            </div>
+
+            <!-- Organization (optional) -->
+            <div>
+              <label for="organization"
+                     class="text-sm font-bold text-gray-700 flex items-center gap-1">
+                Organization / Host (optional)
+              </label>
+              <input
+                id="organization"
+                type="text"
+                placeholder="e.g., Girls Who Code, Local Library"
+                class="mt-2 w-full rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 py-3 px-4 text-lg outline-none"
+              />
+            </div>
+
+            <!-- Error message -->
+            <p id="form-error" class="text-sm text-red-600 hidden">
+              Please complete all required fields.
+            </p>
+
+            <!-- Submit Button -->
+            <button
+              id="submit-button"
+              type="submit"
+              class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-4 rounded-xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2"
+            >
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+              <span id="submit-button-text">Publish Opportunity</span>
+              <span id="submit-button-spinner" class="hidden">
+                <i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>
+              </span>
+            </button>
+
+            <p class="text-xs text-gray-500 text-center mt-2">
+              In this demo, opportunities are stored in your browser using localStorage
+              and can be shown on the Opportunities page.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- Thank You / Success State -->
+      <section id="create-thankyou" class="hidden">
+        <div class="min-h-[60vh] flex items-center justify-center py-12">
+          <div class="text-center max-w-2xl px-4">
+            <i data-lucide="check-circle" class="w-24 h-24 text-green-500 mx-auto mb-6"></i>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Opportunity Created! 🎉
+            </h2>
+            <p class="text-lg text-gray-600 mb-4">
+              Thank you for contributing a free opportunity for families.
+            </p>
+            <p class="text-sm text-gray-500">
+              You’ll be redirected to the Opportunities page in a moment so you can see it listed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // ---------- ROUTING ----------
+    function createPageUrl(page) {
+      const routes = {
+        Home: "home.html",
+        Opportunities: "opportunities.html",
+        CreateOpportunity: "create-opportunity.html",
+        Donate: "donate.html",
+        CompleteProfile: "complete-profile.html",
+        Impact: "impact.html",
+        Statistics: "statistics.html"
+      };
+      return routes[page] || "home.html";
+    }
+
+    // ---------- LOCALSTORAGE HELPERS ----------
+    const STORAGE_KEY = "connectkids_opportunities";
+
+    function loadOpportunities() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        console.warn("Failed to parse opportunities from localStorage", e);
+        return [];
+      }
+    }
+
+    function saveOpportunity(opp) {
+      const current = loadOpportunities();
+      current.push(opp);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(current));
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // -------- Inject header --------
+      fetch("header.html") // if this page is in a subfolder, adjust path (e.g. "../header.html")
+        .then(res => res.text())
+        .then(html => {
+          const headerEl = document.getElementById("site-header");
+          if (headerEl) headerEl.innerHTML = html;
+
+          // Wire nav links (including those inside header)
+          document.querySelectorAll("[data-page]").forEach((el) => {
+            const page = el.getAttribute("data-page");
+            el.setAttribute("href", createPageUrl(page));
+          });
+
+          // Initialize icons after header is present
+          if (window.lucide) {
+            window.lucide.createIcons();
+          }
+        })
+        .catch(err => {
+          console.error("Error loading header.html:", err);
+        });
+
+      // -------- Form logic --------
+      const form = document.getElementById("create-opportunity-form");
+      const errorEl = document.getElementById("form-error");
+      const submitButton = document.getElementById("submit-button");
+      const submitSpinner = document.getElementById("submit-button-spinner");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const title = document.getElementById("title").value.trim();
+        const ageRange = document.getElementById("age_range").value;
+        const interest = document.getElementById("interest").value;
+        const description = document.getElementById("description").value.trim();
+        const link = document.getElementById("link").value.trim();
+        const organization = document.getElementById("organization").value.trim();
+
+        if (!title || !description || !link) {
+          errorEl.classList.remove("hidden");
+          return;
+        } else {
+          errorEl.classList.add("hidden");
+        }
+
+        // Show "saving" state
+        submitButton.disabled = true;
+        submitButton.classList.add("opacity-80", "cursor-not-allowed");
+        submitSpinner.classList.remove("hidden");
+
+        const newOpportunity = {
+          id: Date.now().toString(),
+          title,
+          age_range: ageRange,
+          interest,
+          description,
+          link,
+          organization,
+          created_at: new Date().toISOString()
+        };
+
+        try {
+          saveOpportunity(newOpportunity);
+        } catch (err) {
+          console.error("Failed to save opportunity:", err);
+          alert("There was an error saving your opportunity. Please try again.");
+          submitButton.disabled = false;
+          submitButton.classList.remove("opacity-80", "cursor-not-allowed");
+          submitSpinner.classList.add("hidden");
+          return;
+        }
+
+        // Swap to thank-you view
+        document.getElementById("create-main").classList.add("hidden");
+        document.getElementById("create-thankyou").classList.remove("hidden");
+
+        // Re-run Lucide for icons in success section
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+
+        // Redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = createPageUrl("Opportunities");
+        }, 2000);
+      });
+
+      // Initialize icons for the form area (before header injection completes)
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>
