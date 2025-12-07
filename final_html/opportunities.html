@@ -204,32 +204,32 @@
     const SEED_OPPORTUNITIES = [
       {
         id: "seed-1",
-        title: "Intro to Python Coding",
-        age_range: "12-14",
-        interest: "coding",
-        description: "A beginner-friendly online course where students learn Python basics through small projects and games.",
-        link: "https://example.org/python-intro",
-        organization: "Code for Kids",
+        title: "MITES Program",
+        age_range: "15-18",
+        interest: "stem",
+        description: "Join MITES Summer (formerly MITES) for our six-week, on-campus program that immerses students from across the country in life at MIT.",
+        link: "https://mites.mit.edu/discover-mites/mites-summer/",
+        organization: "MIT",
         created_at: "2025-01-01T00:00:00.000Z"
       },
       {
         id: "seed-2",
-        title: "Creative Art Studio at Home",
-        age_range: "6-8",
+        title: "Art of the MOOC",
+        age_range: "15-18",
         interest: "arts",
-        description: "Weekly virtual art sessions using simple household materials to spark creativity and confidence.",
-        link: "https://example.org/creative-art",
-        organization: "Neighborhood Arts Collective",
+        description: "Free online art classes from top universities, designed for kids in low-bandwidth households.",
+        link: "https://online.duke.edu/course/art-of-the-mooc/",
+        organization: "Duke University",
         created_at: "2025-01-02T00:00:00.000Z"
       },
       {
         id: "seed-3",
-        title: "Summer STEM Explorers",
-        age_range: "9-11",
-        interest: "stem",
-        description: "Hands-on experiments in science and engineering, designed for low-bandwidth households.",
-        link: "https://example.org/stem-explorers",
-        organization: "STEM Bridge",
+        title: "Code Monkey Scratch Coding for Kids",
+        age_range: "6-8",
+        interest: "coding",
+        description: "An engaging coding program that teaches young kids the basics of programming using Scratch, fostering creativity and problem-solving skills.",
+        link: "https://www.codemonkey.com/glp-scratch-coding-for-kids-abs/",
+        organization: "Code Monkey",
         created_at: "2025-01-03T00:00:00.000Z"
       }
     ];
@@ -274,11 +274,13 @@
 
       opportunities.forEach((opp) => {
         const meta = getInterestMeta(opp.interest);
-        const created = opp.created_at
-          ? new Date(opp.created_at)
-          : null;
+        const created = opp.created_at ? new Date(opp.created_at) : null;
         const createdLabel = created
-          ? created.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })
+          ? created.toLocaleDateString(undefined, {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })
           : "";
 
         const card = document.createElement("article");
@@ -319,12 +321,14 @@
 
           <div class="mt-4 flex items-center justify-between">
             <a
-             href="view-opportunity.html"
-            class="inline-flex items-center px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold hover:from-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg"
-             >
-         View Programs
-          </a>
-
+              href="${opp.link || '#'}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold hover:from-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg"
+            >
+              View Program
+            </a>
+          </div>
         `;
 
         grid.appendChild(card);
