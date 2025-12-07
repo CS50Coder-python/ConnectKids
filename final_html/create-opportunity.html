@@ -151,6 +151,44 @@
               />
             </div>
 
+            <!-- Location (optional lat/lng) -->
+            <div>
+              <label class="text-sm font-bold text-gray-700 flex items-center gap-1">
+                Location Coordinates (optional)
+              </label>
+              <p class="text-xs text-gray-500 mt-1">
+                If this is an in-person program, add latitude and longitude so it can appear on the map.
+                You can get these from Google Maps by right-clicking on the location.
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-4 mt-2">
+                <div>
+                  <label for="lat" class="text-xs font-semibold text-gray-600">
+                    Latitude
+                  </label>
+                  <input
+                    id="lat"
+                    type="number"
+                    step="0.000001"
+                    placeholder="e.g., 39.961176"
+                    class="mt-1 w-full rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 py-2 px-3 text-sm outline-none"
+                  />
+                </div>
+                <div>
+                  <label for="lng" class="text-xs font-semibold text-gray-600">
+                    Longitude
+                  </label>
+                  <input
+                    id="lng"
+                    type="number"
+                    step="0.000001"
+                    placeholder="e.g., -82.998794"
+                    class="mt-1 w-full rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 py-2 px-3 text-sm outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
             <!-- Error message -->
             <p id="form-error" class="text-sm text-red-600 hidden">
               Please complete all required fields.
@@ -236,7 +274,7 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       // -------- Inject header --------
-      fetch("header.html") // if this page is in a subfolder, adjust path (e.g. "../header.html")
+      fetch("header.html")
         .then(res => res.text())
         .then(html => {
           const headerEl = document.getElementById("site-header");
@@ -273,6 +311,15 @@
         const link = document.getElementById("link").value.trim();
         const organization = document.getElementById("organization").value.trim();
 
+        const latRaw = document.getElementById("lat").value.trim();
+        const lngRaw = document.getElementById("lng").value.trim();
+
+        let lat = latRaw ? parseFloat(latRaw) : null;
+        let lng = lngRaw ? parseFloat(lngRaw) : null;
+
+        if (Number.isNaN(lat)) lat = null;
+        if (Number.isNaN(lng)) lng = null;
+
         if (!title || !description || !link) {
           errorEl.classList.remove("hidden");
           return;
@@ -293,6 +340,8 @@
           description,
           link,
           organization,
+          lat,
+          lng,
           created_at: new Date().toISOString()
         };
 
